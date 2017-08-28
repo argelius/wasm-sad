@@ -1,0 +1,9 @@
+{
+  "name": "wasm-sad",
+  "version": "0.0.1",
+  "description": "SAD using WASM",
+  "main": "index.js",
+  "repository": "git@github.com:argelius/wasm-sad.git",
+  "author": "Andreas Argelius <andreas@argeli.us>",
+  "license": "MIT"
+}
