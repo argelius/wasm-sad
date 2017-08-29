@@ -2,8 +2,19 @@
   "name": "wasm-sad",
   "version": "0.0.1",
   "description": "SAD using WASM",
-  "main": "index.js",
+  "main": "dist.js",
   "repository": "git@github.com:argelius/wasm-sad.git",
   "author": "Andreas Argelius <andreas@argeli.us>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "scripts": {
+    "test": "$(yarn bin)/ava",
+    "lint": "$(yarn bin)/eslint \"**/*.js\" --quiet",
+    "build": "make dist.js"
+  }
 }

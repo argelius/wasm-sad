@@ -1,5 +1,5 @@
-
 const SAD = require('./dist');
+
 const N = 100000;
 
 const A = new Uint8ClampedArray(N);

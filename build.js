@@ -10,7 +10,7 @@ const array = bytes
   .map(byte => `0x${zeroPad(byte.toString(16))}`)
   .join(', ');
 
-inFile = fs.readFileSync('index.js').toString();
+let inFile = fs.readFileSync('index.js').toString();
 
 inFile = inFile.replace('WASM_BYTES', array);
 
