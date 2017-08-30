@@ -6,11 +6,12 @@
     
   </head>
   <body>
+    <button onclick="benchmark()">Run benchmark</button>
     <script>
       const env = {
         memoryBase: 0,
         tableBase: 0,
-        memory: new WebAssembly.Memory({ initial: 256 }),
+        memory: new WebAssembly.Memory({ initial: 10 }),
         table: new WebAssembly.Table({ initial: 0, element: 'anyfunc' }),
       };
 
@@ -21,13 +22,45 @@
           const { instance } = results;
           const data = new Uint8Array(instance.exports.mem.buffer);
 
-          console.log(data);
-
-          window.SAD = (A, B) => {
+          window.wasmSAD = (A, B) => {
             data.set(A, 0);
             data.set(B, A.length);
             return instance.exports.sad(0, A.length, A.length);
           };
+
+          window.jsSAD = (A, B) => {
+            let sum = 0;
+
+            for (let i = 0; i < A.length; i += 1) {
+              sum += Math.abs(A[i] - B[i]);
+            }
+            return sum;
+          }
+
+          window.benchmark = () => {
+            const N = 10000;
+
+            const A = new Uint8ClampedArray(N);
+            const B = new Uint8ClampedArray(N);
+
+            for (let i = 0; i < N; i += 1) {
+              A[i] = Math.floor(255 * Math.random());
+              B[i] = Math.floor(255 * Math.random());
+            }
+
+            console.time('JS');
+            for (let i = 0; i < 10000; i += 1) {
+              jsSAD(A, B);
+            }
+            console.timeEnd('JS');
+
+            console.time('WASM');
+            for (let i = 0; i < 10000; i += 1) {
+              wasmSAD(A, B);
+            }
+            console.timeEnd('WASM');
+          }
+
         });
     </script>
   </body>
