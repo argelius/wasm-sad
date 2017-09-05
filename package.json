@@ -1,6 +1,6 @@
 {
   "name": "wasm-sad",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SAD using WASM",
   "main": "dist.js",
   "repository": "git@github.com:argelius/wasm-sad.git",
@@ -8,9 +8,13 @@
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.22.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-replace": "^1.1.1"
   },
   "scripts": {
     "test": "$(yarn bin)/ava",

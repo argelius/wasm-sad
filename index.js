@@ -1,4 +1,3 @@
-// eslint-disable-next-line max-len
 const bytes = new Uint8Array([WASM_BYTES]);
 
 let wasmSad = null;

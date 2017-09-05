@@ -3,4 +3,4 @@ sad.wasm: sad.wast
 	wasm-opt -O2 sad.wasm -o sad.wasm
 
 dist.js: sad.wasm index.js
-	node build.js > dist.js
+	./node_modules/.bin/rollup -c
