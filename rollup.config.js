@@ -1,5 +1,4 @@
 import fs from 'fs';
-import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
 
